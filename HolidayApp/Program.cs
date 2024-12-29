@@ -9,6 +9,7 @@ namespace HolidayApp
         {
             bool continueBooking = true;
 
+            // Tatil paketi rezervasyonu yapma döngüsü
             while (continueBooking)
             {
                 Console.WriteLine("Tatil Paketi Uygulamasina Hosgeldiniz ! ");
@@ -18,6 +19,7 @@ namespace HolidayApp
                 string choice = string.Empty;
                 int cost = 0;
 
+                // Tatil paketi secenekleri
                 while (!validChoice)
                 {
                     Console.WriteLine("1 - Bodrum (Paket başlangıç fiyatı 4000 TL)\n2 - Marmaris (Paket başlangıç fiyatı 3000 TL) \n3 - Çeşme (Paket başlangıç fiyatı 5000 TL)\n");
@@ -65,6 +67,7 @@ namespace HolidayApp
                 bool validTransportChoice = false;
                 int transportCost = 0;
 
+                //Ulasim secenekleri
                 while (!validTransportChoice)
                 {
                     Console.Write("Hangi ulaşım türünü tercih ediyorsunuz? \n" +
@@ -88,17 +91,20 @@ namespace HolidayApp
                     }
                 }
 
+                // Toplam maliyet hesaplama
                 decimal totalCost = (cost + transportCost) * personCount;
 
                 // Konumun baş harfini büyük yapma
                 string formattedChoice = char.ToUpper(choice[0]) + choice.Substring(1);
 
+                // Rezervasyon özeti
                 Console.WriteLine($"\nRezervasyon Ozeti:");
                 Console.WriteLine($"Konum: {formattedChoice}");
                 Console.WriteLine($"Toplam Kisi Sayisi: {personCount}");
                 Console.WriteLine($"Ulaşım Türü: {(transportCost == 4000 ? "Havayolu" : "Karayolu")}");
                 Console.WriteLine($"Toplam Maliyet: {totalCost} TL");
 
+                // Yeni rezervasyon yapmak isteyip istemediğini sorma
                 Console.Write("Başka bir tatil paketi rezervasyonu yapmak ister misiniz? (Evet/Hayir): ");
                 string continueResponse = Console.ReadLine().ToLower();
 
@@ -112,9 +118,4 @@ namespace HolidayApp
         }
     }
 
-    class HolidayPackage
-    {
-        public string Location { get; set; }
-        public decimal Price { get; set; }
-    }
 }
